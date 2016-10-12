@@ -16,17 +16,27 @@ class UsersController extends Controller
     public function __construct(Application $wechat){
         $this->wechat = $wechat;
     }
-
+    //获取用户列表
     public function users(){
-        //获取用户列表
+
         $users = $this->wechat->user->lists();
         return $users;
-    }
 
+    }
+    //用户信息
     public function user($openId){
-        //获取用户信息
+
         $user = $this->wechat->user->get($openId);
         return $user;
 
     }
+
+    public function remark(){
+
+        $this->wechat->user->remark('oifXIv4d4mZUajPm6QQeWi6tfhYY','Wewen');
+
+        return 'ok';
+    }
+
+
 }
