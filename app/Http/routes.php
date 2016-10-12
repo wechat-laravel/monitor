@@ -24,7 +24,7 @@ Route::get('/remark/{openId}/name/{name}','UsersController@remark');
 //分组列表
 Route::get('/groups','UsersController@groups');
 //创建分组
-Route::get('/crup','UsersController@crup');
+Route::get('/crup/{name}','UsersController@crup');
 //修改分组
 Route::get('/upup/{groupId}/name/{name}','UsersController@upup');
 //删除分组
