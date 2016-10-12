@@ -23,7 +23,10 @@ class UsersController extends Controller
         return $users;
     }
 
-    public function user(){
+    public function user($openId){
+        //获取用户信息
+        $user = $this->wechat->user->get($openId);
+        return $user;
 
     }
 }
