@@ -15,3 +15,5 @@ Route::get('/', function () {
     return view('welcome');
 });
 Route::any('/wechat', 'WechatController@serve');
+Route::get('/users','UsersController@users');
+Route::get('/user/{openId}','UsersController@user');
