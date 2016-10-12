@@ -12,6 +12,7 @@ class VerifyCsrfToken extends BaseVerifier
      * @var array
      */
     protected $except = [
-        //
+        //可以不开启csrf验证的路由
+        '/wechat',
     ];
 }
