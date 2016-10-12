@@ -28,6 +28,10 @@ class WechatController extends Controller
                     # 事件消息...
                     break;
                 case 'text':
+                    //如果接收到'加入Wewen组',把用户添加到该组里
+                    if($message->Content === '加入Wewen组'){
+                        return $message->FromUserName;
+                    }
 
                     return '你好 '.$userApi->get($message->FromUserName)->nickname;
 
@@ -59,5 +63,5 @@ class WechatController extends Controller
 
         return $wechat->server->serve();
     }
-    
+
 }
