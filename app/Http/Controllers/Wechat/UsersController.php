@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Wechat;
 
 use EasyWeChat\Foundation\Application;
 use Illuminate\Http\Request;
