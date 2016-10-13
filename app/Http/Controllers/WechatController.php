@@ -25,8 +25,10 @@ class WechatController extends Controller
         $wechat->server->setMessageHandler(function($message) use ($userApi){
             switch ($message->MsgType) {
                 case 'event':
+                    //多种事件
                     switch ($message->Event){
                         case 'subscribe':
+                                return '欢迎关注Monitor测试号!';
                             break;
                         case 'CLICK':
                             if ($message->EventKey == 'Pyspider_rate'){

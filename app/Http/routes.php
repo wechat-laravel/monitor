@@ -52,3 +52,6 @@ Route::get('/wechat/menus','Wechat\MenuController@menus');
 //菜单添加
 Route::get('/wechat/madd','Wechat\MenuController@add');
 
+//pyspider监控
+
+
