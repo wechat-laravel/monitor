@@ -8,6 +8,10 @@ use Illuminate\Http\Request;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
 
+/**
+ * 用户相关操作
+ */
+
 class UsersController extends Controller
 {
     public $wechat;
