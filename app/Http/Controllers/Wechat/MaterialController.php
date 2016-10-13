@@ -17,12 +17,12 @@ class MaterialController extends Controller
 
     public function __construct(Application $material)
     {
-        $this->material = $material->material;
+        $this->material = $material;
     }
 
     //上传图片
     public function image(){
-        $img = $this->material->uploadImage(public_path().'/images/icon.png');
+        $img = $this->material->material->uploadImage(public_path().'/images/icon.png');
         return $img;
     }
 

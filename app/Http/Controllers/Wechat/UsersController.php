@@ -49,32 +49,32 @@ class UsersController extends Controller
     }
 
     //创建分组
-    public function crup($name){
+    public function gcreate($name){
 
         return $this->wechat->user_group->create($name);
 
     }
 
     //修改分组
-    public function upup($groupId,$name){
+    public function gupdate($groupId,$name){
 
         return $this->wechat->user_group->update($groupId,$name);
 
     }
     //删除分组
-    public function deup($groupId){
+    public function gdelete($groupId){
 
         return $this->wechat->user_group->delete($groupId);
 
     }
     //移动单个用户到指定分组
-    public function mvup($openId,$groupId){
+    public function gmove($openId,$groupId){
 
         return $this->wechat->user_group->moveUser($openId,$groupId);
 
     }
     //批量移动用户到指定分组
-    public function mvups(array $openIds,$groupId){
+    public function gmoves(array $openIds,$groupId){
 
         return $this->wechat->user_group->moveUsers($openIds, $groupId);
 
