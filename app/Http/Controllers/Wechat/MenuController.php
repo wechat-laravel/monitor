@@ -55,17 +55,17 @@ class MenuController extends Controller
                 "sub_button" => [
                     [
                         "type" => "view",
-                        "name" => "搜索",
+                        "name" => "采集",
                         "url"  => "http://hackqy.com/"
                     ],
                     [
                         "type" => "view",
-                        "name" => "视频",
+                        "name" => "分类",
                         "url"  => "http://hackqy.com/"
                     ],
                     [
                         "type" => "click",
-                        "name" => "赞一下我们",
+                        "name" => "系统入口",
                         "key" => "V1001_GOOD"
                     ],
                 ],
@@ -75,12 +75,12 @@ class MenuController extends Controller
                 "sub_button" => [
                     [
                         "type" => "view",
-                        "name" => "各项指标",
+                        "name" => "监控指标",
                         "url"  => "http://hackqy.com/"
                     ],
                     [
                         "type" => "view",
-                        "name" => "各种",
+                        "name" => "监控后台",
                         "url"  => "http://hackqy.com/"
                     ],
                     [
