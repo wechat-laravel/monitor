@@ -75,7 +75,17 @@ class UsersController extends Controller
         return $this->wechat->user_group->moveUsers($openIds, $groupId);
 
     }
+    //获取标签列表
+    public function tags(){
 
+        return $this->wechat->user_tag->lists();
+
+    }
+    //获取标签下粉丝列表(其实就是分组下的粉丝列表)
+    public function tag($tagId,$nextOpenId=''){
+        // $nextOpenId：第一个拉取的OPENID，不填默认从头开始拉取
+        return $this->wechat->user_tag->usersOfTag($tagId,$nextOpenId);
+    }
 
 
 }

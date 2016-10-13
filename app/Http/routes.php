@@ -33,3 +33,8 @@ Route::get('/deup/{groupId}','Wechat\UsersController@deup');
 Route::get('/mvup/{opendId}/group/{groupId}','Wechat\UsersController@mvup');
 //批量移动用户到指定分组
 Route::get('/mvups/{opendIds}/group/{groupId}','Wechat\UsersController@mvups');
+//标签列表
+Route::get('/tags','Wechat\UsersController@tags');
+//标签下粉丝列表(其实就是分组下的粉丝列表)
+Route::get('/tag/{tagId}/next/{openId?}','Wechat\UsersController@tag');
+
