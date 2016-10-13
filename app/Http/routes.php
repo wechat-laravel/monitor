@@ -45,7 +45,9 @@ Route::get('/wechat/image','Wechat\MaterialController@image');
 Route::get('/wechat/voice','Wechat\MaterialController@voice');
 //视频
 Route::get('/wechat/video','Wechat\MaterialController@video');
-//菜单管理
+//查询菜单
+Route::get('/wechat/menu','Wechat\MenuController@menu');
+//自定义菜单
 Route::get('/wechat/menus','Wechat\MenuController@menus');
 //菜单添加
 Route::get('/wechat/madd','Wechat\MenuController@add');

@@ -35,18 +35,18 @@ class MenuController extends Controller
                 "sub_button" => [
                     [
                         "type" => "view",
-                        "name" => "关于author",
+                        "name" => "关于作者",
                         "url"  => "http://hackqy.com/"
                     ],
                     [
                         "type" => "view",
-                        "name" => "关于博客",
+                        "name" => "简介",
                         "url"  => "http://hackqy.com/"
                     ],
                     [
-                        "type" => "click",
-                        "name" => "赞一下我们",
-                        "key" => "V1001_GOOD"
+                        "type" => "view",
+                        "name" => "加入我们",
+                        "url"  => "https://github.com/wechat-laravel"
                     ],
                 ],
             ],
@@ -75,17 +75,17 @@ class MenuController extends Controller
                 "sub_button" => [
                     [
                         "type" => "view",
-                        "name" => "搜索",
+                        "name" => "各项指标",
                         "url"  => "http://hackqy.com/"
                     ],
                     [
                         "type" => "view",
-                        "name" => "视频",
+                        "name" => "各种",
                         "url"  => "http://hackqy.com/"
                     ],
                     [
                         "type" => "click",
-                        "name" => "pyspider速度",
+                        "name" => "监控速度",
                         "key" => "V1001_GOOD"
                     ],
                 ],
