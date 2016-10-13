@@ -86,7 +86,7 @@ class MenuController extends Controller
                     [
                         "type" => "click",
                         "name" => "监控速度",
-                        "key" => "V1001_GOOD"
+                        "key" => "Pyspider_rate"
                     ],
                 ],
             ],
