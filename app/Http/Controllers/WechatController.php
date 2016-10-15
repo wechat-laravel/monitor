@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
+use App\Http\Controllers\Monitor\PyspiderController;
 
 class WechatController extends Controller
 {
@@ -32,7 +33,9 @@ class WechatController extends Controller
                             break;
                         case 'CLICK':
                             if ($message->EventKey == 'Pyspider_rate'){
-                                return 'ok';
+                                $pyspider = new PyspiderController();
+                                $rate = $pyspider->index();
+                                return '当前速度为: '.$rate;
                             }
                             break;
                     }
@@ -64,7 +67,7 @@ class WechatController extends Controller
                     break;
                 // ... 其它消息
                 default:
-                    return "欢迎关注 hackqy测试号！";
+                    return "该功能暂未开放.";
                     break;
             }
 
