@@ -40,7 +40,7 @@ class WechatController extends Controller
                             }elseif($message->EventKey == 'IP_status'){
                                 $pyspider = new IpStatusController();
                                 $num = $pyspider->index();
-                                return '可用IP数: '.$num;
+                                return '故障IP数: '.$num;
                             }
                             break;
                     }
