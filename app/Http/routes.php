@@ -53,5 +53,6 @@ Route::get('/wechat/menus','Wechat\MenuController@menus');
 Route::get('/wechat/madd','Wechat\MenuController@add');
 
 //pyspider监控
+Route::get('/monitor/pyspider','Monitor\PyspiderController@index');
 
 
