@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
 use App\Http\Controllers\Monitor\PyspiderController;
+use App\Http\Controllers\Monitor\IpStatusController;
 
 class WechatController extends Controller
 {
@@ -36,6 +37,10 @@ class WechatController extends Controller
                                 $pyspider = new PyspiderController();
                                 $rate = $pyspider->index();
                                 return '当前速度为: '.$rate;
+                            }elseif($message->EventKey == 'IP_status'){
+                                $pyspider = new IpStatusController();
+                                $num = $pyspider->index();
+                                return '可用IP数: '.$num;
                             }
                             break;
                     }

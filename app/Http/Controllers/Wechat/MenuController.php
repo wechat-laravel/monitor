@@ -74,19 +74,19 @@ class MenuController extends Controller
                 "name"       => "监控系统",
                 "sub_button" => [
                     [
-                        "type" => "view",
-                        "name" => "监控指标",
-                        "url"  => "http://hackqy.com/"
-                    ],
-                    [
-                        "type" => "view",
-                        "name" => "监控后台",
-                        "url"  => "http://hackqy.com/"
+                        "type" => "click",
+                        "name" => "监控 IP",
+                        "key"  => "IP_status"
                     ],
                     [
                         "type" => "click",
                         "name" => "监控速度",
                         "key" => "Pyspider_rate"
+                    ],
+                    [
+                        "type" => "view",
+                        "name" => "监控后台",
+                        "url"  => "http://hackqy.com/"
                     ],
                 ],
             ],
