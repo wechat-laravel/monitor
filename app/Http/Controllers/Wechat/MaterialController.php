@@ -17,13 +17,17 @@ class MaterialController extends Controller
     public $material;
     //临时素材
     public $temporary;
+    //群发消息
+    public $broadcast;
 
-    public function __construct(Application $material)
+    public function __construct(Application $wechat)
     {
-        $this->material  = $material->material;
-        $this->temporary = $material->material_temporary;
+        $this->material  = $wechat->material;
+        $this->temporary = $wechat->material_temporary;
+        $this->broadcast = $wechat->broadcast;
 
     }
+
     /**
      * 永久素材列表
      * $type 素材的类型，图片（image）、视频（video）、语音 （voice）、图文（news）
@@ -38,7 +42,7 @@ class MaterialController extends Controller
 
     //上传图片
     public function image(){
-        $img = $this->material->uploadImage(public_path().'/images/test.jpg');
+        $img = $this->material->uploadImage(public_path().'/images/icon.png');
         return $img;
     }
     //删除永久素材
@@ -48,6 +52,11 @@ class MaterialController extends Controller
     //音频
     public function audio(){
 
+    }
+
+    //群发消息
+    public function message(){
+        return $this->broadcast->sendText('大家好！欢迎使用 Wechat-laravel测试号。');
     }
 
 }

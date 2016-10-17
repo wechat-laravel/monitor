@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use EasyWeChat\Message\Image;
+use EasyWeChat\Message\Voice;
 use Illuminate\Http\Request;
 
 use App\Http\Requests;
@@ -25,7 +27,7 @@ class WechatController extends Controller
         $wechat  = app('wechat');
         $userApi = $wechat->user;
 
-        $wechat->server->setMessageHandler(function($message) use ($userApi){
+        $wechat->server->setMessageHandler(function($message) use ($userApi,$wechat){
             switch ($message->MsgType) {
                 case 'event':
                     //多种事件
@@ -60,9 +62,19 @@ class WechatController extends Controller
                     break;
                 case 'image':
                     # 图片消息...
+                    //回复的图片内容
+                    $image = new Image(['media_id'=>'-tf6Ss1cZfE5ntVAAtFeO58gIVBoMZ-MIlhP2imNGsw']);
+                    //作为客服消息发送
+                    $wechat->staff->message($image)->to($message->FromUserName)->send();
+                    //上面不能使用return  要不然报错
+                    return '';
                     break;
                 case 'voice':
-                    # 语音消息...
+                    //$voice = new Voice(['media_id'=>'']);
+                    $messag = '您想说什么?';
+                    $wechat->staff->message($messag)->to($message->FromUserName)->send();
+
+                    return '';
                     break;
                 case 'video':
                     # 视频消息...

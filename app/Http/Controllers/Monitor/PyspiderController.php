@@ -1,6 +1,7 @@
 <?php
 
 namespace App\Http\Controllers\Monitor;
+
 use Illuminate\Http\Request;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
@@ -22,7 +23,7 @@ class PyspiderController extends Controller
     }
 
     public function test(){
-        $user = new UsersController();
+        $user = new UsersController(Application::class);
         return $user->test();
     }
 }
