@@ -14,6 +14,8 @@
 Route::get('/', function () {
     return view('welcome');
 });
+
+
 Route::any('/wechat', 'WechatController@serve');
 //用户列表
 Route::get('/wechat/users','Wechat\UsersController@users');
@@ -51,6 +53,8 @@ Route::get('/wechat/menu','Wechat\MenuController@menu');
 Route::get('/wechat/menus','Wechat\MenuController@menus');
 //菜单添加
 Route::get('/wechat/madd','Wechat\MenuController@add');
+
+
 
 //pyspider监控
 Route::get('/monitor/pyspider','Monitor\PyspiderController@index');
