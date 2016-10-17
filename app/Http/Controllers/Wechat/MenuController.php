@@ -28,6 +28,7 @@ class MenuController extends Controller
         return $this->menu->current();
 
     }
+    //创建自定义菜单
     public function add(){
         $buttons = [
             [
