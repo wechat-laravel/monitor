@@ -8,6 +8,7 @@ use App\Http\Requests;
 use App\Http\Controllers\Controller;
 use App\Http\Controllers\Monitor\PyspiderController;
 use App\Http\Controllers\Monitor\IpStatusController;
+use App\Http\Controllers\Wechat\UsersController;
 
 class WechatController extends Controller
 {
@@ -49,7 +50,9 @@ class WechatController extends Controller
                 case 'text':
                     //如果接收到'加入Wewen组',把用户添加到该组里
                     if($message->Content === '加入Wewen组'){
-                        return $message->FromUserName;
+                        $user   = new UsersController();
+                        $result = $user->gmove($message->FromUserName,101);
+                        return $result;
                     }
 
                     return '你好 '.$userApi->get($message->FromUserName)->nickname;

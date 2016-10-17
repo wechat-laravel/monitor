@@ -70,8 +70,8 @@ class UsersController extends Controller
     //移动单个用户到指定分组
     public function gmove($openId,$groupId){
 
-        return $this->wechat->user_group->moveUser($openId,$groupId);
-
+        $gmove =  $this->wechat->user_group->moveUser($openId,$groupId);
+        return 'ok';
     }
     //批量移动用户到指定分组
     public function gmoves(array $openIds,$groupId){
