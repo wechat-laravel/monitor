@@ -33,7 +33,7 @@ class WechatController extends Controller
                     //多种事件
                     switch ($message->Event){
                         case 'subscribe':
-                                return '欢迎关注Monitor测试号!';
+                                return '欢迎关注 Wechat-laravel !';
                             break;
                         case 'CLICK':
                             if ($message->EventKey == 'Pyspider_rate'){
