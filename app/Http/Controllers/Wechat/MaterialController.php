@@ -41,7 +41,10 @@ class MaterialController extends Controller
         $img = $this->material->uploadImage(public_path().'/images/test.jpg');
         return $img;
     }
-
+    //删除永久素材
+    public function delete($mediaId){
+        return $this->material->delete($mediaId);
+    }
     //音频
     public function audio(){
 
