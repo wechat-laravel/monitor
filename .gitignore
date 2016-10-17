@@ -5,5 +5,5 @@ Homestead.json
 .env
 /config
 /.idea
-routes.php
+app/Http/routes.php
 
