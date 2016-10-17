@@ -38,7 +38,7 @@ class MaterialController extends Controller
 
     //上传图片
     public function image(){
-        $img = $this->material->uploadImage(public_path().'/images/test.png');
+        $img = $this->material->uploadImage(public_path().'/images/test.jpg');
         return $img;
     }
 
