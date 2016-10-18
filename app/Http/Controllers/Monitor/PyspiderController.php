@@ -24,18 +24,19 @@ class PyspiderController extends Controller
 
 
     public function auth(Request $request){
-        $code   = $request->get('code');
-        $appid  = env('WECHAT_APPID');
-        $secret = env('WECHAT_SECRET');
-        $url    = "https://api.weixin.qq.com/sns/oauth2/access_token?appid=$appid&secret=$secret&code=$code&grant_type=authorization_code";
-        $data   = $this->curls($url);
+        $code     = $request->get('code');
+        $appid    = env('WECHAT_APPID');
+        $secret   = env('WECHAT_SECRET');
+        $base_url = env('BASE_URL');
+        $url      = "https://api.weixin.qq.com/sns/oauth2/access_token?appid=$appid&secret=$secret&code=$code&grant_type=authorization_code";
+        $data     = $this->curls($url);
 
-        $token  = $data->access_token;
-        $openid = $data->openid;
-        $url    = "https://api.weixin.qq.com/sns/userinfo?access_token=$token&openid=$openid&lang=zh_CN";
-        $result = $this->curls($url);
+        $token    = $data->access_token;
+        $openid   = $data->openid;
+        $url      = "https://api.weixin.qq.com/sns/userinfo?access_token=$token&openid=$openid&lang=zh_CN";
+        $result   = $this->curls($url);
 
-        return view('user',['user'=>$result]);
+        return view('user',['user'=>$result,'url'=>$base_url]);
 
 
     }

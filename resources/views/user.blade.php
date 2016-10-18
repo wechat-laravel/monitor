@@ -42,7 +42,7 @@
         <img src="{{ $user->headimgurl }}" alt="" style="width: 150px;height: 150px;border-radius: 75px;">
     </div>
     <div>
-
+        <a href="{{ $url }}">点击进入>>></a>
     </div>
 </div>
 </body>

@@ -31,6 +31,7 @@ class MenuController extends Controller
     //创建自定义菜单
     public function add(){
         $appid = env('WECHAT_APPID');
+        $base_url = env('BASE_URL');
         $auth_url = "https://open.weixin.qq.com/connect/oauth2/authorize?appid=$appid&redirect_uri=http%3a%2f%2fmp.hackqy.com%2fwechat%2fmonitor%2fauth&response_type=code&scope=snsapi_userinfo&state=STATE#wechat_redirect";
         $buttons = [
             [
@@ -44,7 +45,7 @@ class MenuController extends Controller
                     [
                         "type" => "view",
                         "name" => "简介",
-                        "url"  => "http://hackqy.com/"
+                        "url"  => "$base_url"
                     ],
                     [
                         "type" => "view",
@@ -59,12 +60,12 @@ class MenuController extends Controller
                     [
                         "type" => "view",
                         "name" => "采集",
-                        "url"  => "http://mp.hackqy.com/user"
+                        "url"  => "$base_url"
                     ],
                     [
                         "type" => "view",
                         "name" => "分类",
-                        "url"  => "http://hackqy.com/"
+                        "url"  => "$base_url"
                     ],
                     [
                         "type" => "click",
