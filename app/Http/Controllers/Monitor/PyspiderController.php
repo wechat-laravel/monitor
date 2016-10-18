@@ -25,7 +25,7 @@ class PyspiderController extends Controller
 
 
     public function auth(){
-
+          //$url = 'https://open.weixin.qq.com/connect/oauth2/authorize?appid=wx2e13dc930f0df2c0&redirect_uri=http%3a%2f%2fmp.hackqy.com%2fwechat%2fmonitor%2fauth&response_type=code&scope=snsapi_userinfo&state=STATE#wechat_redirect';
 //        $config = [
 //
 //        ];
