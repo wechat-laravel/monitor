@@ -2,11 +2,9 @@
 
 namespace App\Http\Controllers\Monitor;
 
-use EasyWeChat\Foundation\Application;
 use Illuminate\Http\Request;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
-use App\Http\Controllers\Wechat\UsersController;
 
 
 class PyspiderController extends Controller
@@ -24,8 +22,10 @@ class PyspiderController extends Controller
     }
 
 
-    public function auth(){
-          //$url = 'https://open.weixin.qq.com/connect/oauth2/authorize?appid=wx2e13dc930f0df2c0&redirect_uri=http%3a%2f%2fmp.hackqy.com%2fwechat%2fmonitor%2fauth&response_type=code&scope=snsapi_userinfo&state=STATE#wechat_redirect';
+    public function auth(Request $request){
+        $code = $request->get('code');
+        $secret = config('WECHAT_SECRET');
+          //$url = '';
 //        $config = [
 //
 //        ];
@@ -33,7 +33,7 @@ class PyspiderController extends Controller
 //        $oauth = $app->oauth;
 //
 //        $user = $oauth->user();
-        return 'ok';
+        return $code;
 
 
     }

@@ -30,6 +30,7 @@ class MenuController extends Controller
     }
     //创建自定义菜单
     public function add(){
+        
         $buttons = [
             [
                 "name"       => "简介",
@@ -87,7 +88,7 @@ class MenuController extends Controller
                     [
                         "type" => "view",
                         "name" => "监控后台",
-                        "url"  => "https://open.weixin.qq.com/connect/oauth2/authorize?appid=wx2e13dc930f0df2c0&redirect_uri=http%3a%2f%2fmp.hackqy.com%2fwechat%2fmonitor%2fauth&response_type=code&scope=snsapi_userinfo&state=STATE#wechat_redirect"
+                        "url"  => config('TEST_OAUTH')
                     ],
                 ],
             ],
