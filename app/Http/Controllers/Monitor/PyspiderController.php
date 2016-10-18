@@ -24,17 +24,18 @@ class PyspiderController extends Controller
 
 
     public function auth(Request $request){
-        $code = $request->get('code');
+        $code   = $request->get('code');
+        $appid  = env('WECHAT_APPID');
         $secret = env('WECHAT_SECRET');
-          //$url = '';
-//        $config = [
-//
-//        ];
-//        $app = new Application($config);
-//        $oauth = $app->oauth;
-//
-//        $user = $oauth->user();
-        return $code;
+        $url    = "https://api.weixin.qq.com/sns/oauth2/access_token?appid=$appid&secret=$secret&code=$code&grant_type=authorization_code";
+        $data   = $this->curls($url);
+
+        $token  = $data->access_token;
+        $openid = $data->openid;
+        $url    = "https://api.weixin.qq.com/sns/userinfo?access_token=$token&openid=$openid&lang=zh_CN";
+        $result = $this->curls($url);
+
+        return view('user',['user'=>$result]);
 
 
     }
@@ -44,4 +45,13 @@ class PyspiderController extends Controller
         return view('user');
     }
 
+    public function curls($url){
+        $ch = curl_init($url);
+        curl_setopt($ch,CURLOPT_RETURNTRANSFER,1);
+        curl_setopt($ch,CURLOPT_HEADER,0);
+        $data = curl_exec($ch);
+        curl_close($ch);
+        $data = \GuzzleHttp\json_decode($data);
+        return $data;
+    }
 }

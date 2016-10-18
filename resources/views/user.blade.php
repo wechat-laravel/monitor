@@ -38,11 +38,12 @@
 <body>
 <div class="container">
     <div class="content">
-        <div class="title">Hello World !</div>
-        {{--<img src="{{ $user->getAvatar() }}}" alt="">--}}
+        <div class="title">Hello {{ $user->nickname }} !</div>
+        <br><br>
+        <img src="{{ $user->headimgurl }}" alt="" style="width: 150px;height: 150px">
     </div>
     <div>
-        {{--<a href="">{{  $user->getNickName() }}</a>--}}
+
     </div>
 </div>
 </body>
