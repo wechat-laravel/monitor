@@ -57,7 +57,7 @@ class MenuController extends Controller
                     [
                         "type" => "view",
                         "name" => "采集",
-                        "url"  => "http://hackqy.com/"
+                        "url"  => "http://mp.hackqy.com/user"
                     ],
                     [
                         "type" => "view",

@@ -38,11 +38,11 @@
 <body>
 <div class="container">
     <div class="content">
-        <div class="title">Laravel 5</div>
-        <img src="{{ $user->getAvatar() }}}" alt="">
+        <div class="title">Hello World !</div>
+        {{--<img src="{{ $user->getAvatar() }}}" alt="">--}}
     </div>
     <div>
-        <a href="">{{  $user->getNickName() }}</a>
+        {{--<a href="">{{  $user->getNickName() }}</a>--}}
     </div>
 </div>
 </body>

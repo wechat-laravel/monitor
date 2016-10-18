@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Monitor;
 
+use EasyWeChat\Foundation\Application;
 use Illuminate\Http\Request;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
@@ -22,8 +23,23 @@ class PyspiderController extends Controller
         return $rate;
     }
 
-    public function test(){
-        $user = new UsersController(Application::class);
-        return $user->test();
+
+    public function auth(){
+
+//        $config = [
+//
+//        ];
+//        $app = new Application($config);
+//        $oauth = $app->oauth;
+//
+//        $user = $oauth->user();
+        return 'ok';
+
+
     }
+
+    public function hello(){
+        return view('user');
+    }
+
 }
