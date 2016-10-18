@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Laravel</title>
+    <title>Monitor</title>
 
     <link href="https://fonts.googleapis.com/css?family=Lato:100" rel="stylesheet" type="text/css">
 
@@ -38,9 +38,8 @@
 <body>
 <div class="container">
     <div class="content">
-        <div class="title">Hello {{ $user->nickname }} !</div>
-        <br><br>
-        <img src="{{ $user->headimgurl }}" alt="" style="width: 150px;height: 150px">
+        <div class="title" style="margin-bottom: 85%;">Hello {{ $user->nickname }} !</div>
+        <img src="{{ $user->headimgurl }}" alt="" style="width: 150px;height: 150px;border-radius: 75px;">
     </div>
     <div>
 
