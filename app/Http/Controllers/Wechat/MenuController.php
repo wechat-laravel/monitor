@@ -30,7 +30,8 @@ class MenuController extends Controller
     }
     //创建自定义菜单
     public function add(){
-        
+        $appid = env('WECHAT_APPID');
+        $auth_url = "https://open.weixin.qq.com/connect/oauth2/authorize?appid=$appid&redirect_uri=http%3a%2f%2fmp.hackqy.com%2fwechat%2fmonitor%2fauth&response_type=code&scope=snsapi_userinfo&state=STATE#wechat_redirect";
         $buttons = [
             [
                 "name"       => "简介",
@@ -88,7 +89,7 @@ class MenuController extends Controller
                     [
                         "type" => "view",
                         "name" => "监控后台",
-                        "url"  => config('TEST_OAUTH')
+                        "url"  => $auth_url
                     ],
                 ],
             ],

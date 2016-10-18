@@ -7,6 +7,7 @@ use App\Http\Requests;
 use App\Http\Controllers\Controller;
 
 
+
 class PyspiderController extends Controller
 {
     /**
@@ -24,7 +25,7 @@ class PyspiderController extends Controller
 
     public function auth(Request $request){
         $code = $request->get('code');
-        $secret = config('WECHAT_SECRET');
+        $secret = env('WECHAT_SECRET');
           //$url = '';
 //        $config = [
 //
@@ -39,6 +40,7 @@ class PyspiderController extends Controller
     }
 
     public function hello(){
+
         return view('user');
     }
 
