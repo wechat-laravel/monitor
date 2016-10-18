@@ -40,9 +40,9 @@
     <div class="content">
         <div class="title" style="margin-bottom: 85%;">Hello {{ $user->nickname }} !</div>
         <img src="{{ $user->headimgurl }}" alt="" style="width: 150px;height: 150px;border-radius: 75px;">
-    </div>
-    <div>
-        <a href="{{ $url }}">点击进入>>></a>
+        <br>
+        <br>
+        <a href="{{ $url }}" style="text-decoration: none ;color: black">点击进入</a>
     </div>
 </div>
 </body>
