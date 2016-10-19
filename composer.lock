@@ -4,8 +4,8 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "e50ed8640bc8513c377ed128a7d803d1",
-    "content-hash": "07b4d12f6cc4751367ac1bb8b4bc6104",
+    "hash": "8b0bbb83c8fccde80cc7562ab874e351",
+    "content-hash": "7a48c283e07942a59d69b6bd9eb35113",
     "packages": [
         {
             "name": "classpreloader/classpreloader",
@@ -2484,123 +2484,6 @@
                 "environment"
             ],
             "time": "2015-05-30 15:59:26"
-        },
-        {
-            "name": "zhuayi/admin",
-            "version": "1.1.0",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/zhuayi/admin.git",
-                "reference": "cae453079196fdd36fab5f27778ac1c8c2942936"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://packagist.phpcomposer.com/files/zhuayi/admin/cae453079196fdd36fab5f27778ac1c8c2942936.zip",
-                "reference": "cae453079196fdd36fab5f27778ac1c8c2942936",
-                "shasum": ""
-            },
-            "require": {
-                "laravel/framework": "~5.1.0",
-                "php": ">=5.5.9",
-                "zizaco/entrust": "~1.4.1"
-            },
-            "require-dev": {
-                "phpmd/phpmd": "@stable"
-            },
-            "type": "library",
-            "autoload": {
-                "psr-4": {
-                    "Zhuayi\\admin\\": "src/"
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "authors": [
-                {
-                    "name": "zhuayi",
-                    "email": "2179942@qq.com"
-                }
-            ],
-            "description": "基于Laravel和AdminLte的搭建的后台权限系统",
-            "keywords": [
-                "acl",
-                "admin",
-                "auth",
-                "illuminate",
-                "laravel",
-                "permission",
-                "roles"
-            ],
-            "time": "2016-02-15 08:45:38"
-        },
-        {
-            "name": "zizaco/entrust",
-            "version": "1.4.1",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/Zizaco/entrust.git",
-                "reference": "3aa6e7923c5beea3fb0a5e57e902ae1d6beed173"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://packagist.phpcomposer.com/files/Zizaco/entrust/3aa6e7923c5beea3fb0a5e57e902ae1d6beed173.zip",
-                "reference": "3aa6e7923c5beea3fb0a5e57e902ae1d6beed173",
-                "shasum": ""
-            },
-            "require": {
-                "illuminate/console": "~5.0",
-                "illuminate/support": "~5.0",
-                "php": ">=5.4.0"
-            },
-            "require-dev": {
-                "illuminate/database": "~5.0",
-                "mockery/mockery": "dev-master",
-                "phpunit/phpunit": "~4.1",
-                "sami/sami": "dev-master"
-            },
-            "type": "library",
-            "autoload": {
-                "classmap": [
-                    "src/commands"
-                ],
-                "psr-4": {
-                    "Zizaco\\Entrust\\": "src/Entrust/"
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "authors": [
-                {
-                    "name": "Andrew Elkins",
-                    "homepage": "http://andrewelkins.com"
-                },
-                {
-                    "name": "Zizaco Zizuini",
-                    "email": "zizaco@gmail.com"
-                },
-                {
-                    "name": "Ben Batschelet",
-                    "homepage": "http://github.com/bbatsche"
-                },
-                {
-                    "name": "Michele Angioni",
-                    "email": "michele.angioni@gmail.com"
-                }
-            ],
-            "description": "This package provides a flexible way to add Role-based Permissions to Laravel",
-            "keywords": [
-                "acl",
-                "auth",
-                "illuminate",
-                "laravel",
-                "permission",
-                "roles"
-            ],
-            "time": "2015-08-07 18:05:40"
         }
     ],
     "packages-dev": [
