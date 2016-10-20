@@ -19,17 +19,17 @@ class MenuController extends Controller
         $this->menu = $menu->menu;
     }
     //获取普通菜单
-    public function menu(){
+    public function ordinaryMenu(){
         return $this->menu->all();
     }
 
     //获取自定义菜单
-    public function menus(){
+    public function customMenus(){
         return $this->menu->current();
 
     }
     //创建自定义菜单
-    public function add(){
+    public function create(){
         $appid = env('WECHAT_APPID');
         $base_url = env('BASE_URL');
         $auth_url = "https://open.weixin.qq.com/connect/oauth2/authorize?appid=$appid&redirect_uri=http%3a%2f%2fmp.hackqy.com%2fwechat%2fmonitor%2fauth&response_type=code&scope=snsapi_userinfo&state=STATE#wechat_redirect";

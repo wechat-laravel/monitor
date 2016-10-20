@@ -55,4 +55,11 @@ class PyspiderController extends Controller
         $data = \GuzzleHttp\json_decode($data);
         return $data;
     }
+
+    public function test(){
+        return 'ok';
+    }
+    public function test2(){
+        return 'ok';
+    }
 }
