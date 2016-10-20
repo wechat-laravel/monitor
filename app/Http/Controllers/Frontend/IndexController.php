@@ -9,6 +9,19 @@ use App\Http\Controllers\Controller;
 
 class IndexController extends Controller
 {
+
+
+    public function __construct()
+    {
+        //控制器中使用中间件
+        //并指定受限制的方法
+        $this->middleware('test',['only'=>['index','test']]);
+        //指定不受限制的方法
+        $this->middleware('test',['except'=>['text']]);
+
+    }
+
+
     /**
      * Display a listing of the resource.
      *
@@ -18,15 +31,18 @@ class IndexController extends Controller
     {
         return 'index';
     }
-    
+
     public function test(){
-        return 'text';
+        return 'test';
     }
     /**
      * Show the form for creating a new resource.
      *
      * @return \Illuminate\Http\Response
      */
+    public function text(){
+        return 'text';
+    }
     public function create()
     {
         //

@@ -17,7 +17,7 @@ class OldMiddleware
     public function handle($request, Closure $next)
     {
         if($request->input('age') <=200){
-            return redirect('home');
+            return redirect('wechat/monitor/test');
         }
         return $next($request);
     }
