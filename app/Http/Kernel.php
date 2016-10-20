@@ -7,6 +7,7 @@ use Illuminate\Foundation\Http\Kernel as HttpKernel;
 class Kernel extends HttpKernel
 {
     /**
+     * 全局中间件
      * The application's global HTTP middleware stack.
      *
      * @var array
@@ -21,6 +22,7 @@ class Kernel extends HttpKernel
     ];
 
     /**
+     * 为路由指派中间件
      * The application's route middleware.
      *
      * @var array
@@ -30,5 +32,6 @@ class Kernel extends HttpKernel
         'auth.basic' => \Illuminate\Auth\Middleware\AuthenticateWithBasicAuth::class,
         'guest' => \App\Http\Middleware\RedirectIfAuthenticated::class,
         'wechat.oauth' => \Overtrue\LaravelWechat\Middleware\OAuthAuthenticate::class,
+        'front' => \App\Http\Middleware\OldMiddleware::class,
     ];
 }
