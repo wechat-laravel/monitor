@@ -24,7 +24,7 @@ class MenuController extends Controller
     }
 
     //获取自定义菜单
-    public function customMenus(){
+    public function customMenu(){
         return $this->menu->current();
 
     }
