@@ -21,14 +21,14 @@ class UsersController extends Controller
         $this->wechat = $wechat;
     }
     //用户列表
-    public function users(){
+    public function userList(){
 
         $users = $this->wechat->user->lists();
         return $users;
 
     }
     //用户信息
-    public function user($openId){
+    public function userInfo($openId){
 
         $user = $this->wechat->user->get($openId);
         return $user;
@@ -42,56 +42,53 @@ class UsersController extends Controller
     }
 
     //分组列表
-    public function groups(){
+    public function groupList(){
 
         return  $this->wechat->user_group->lists();
 
     }
 
     //创建分组
-    public function gcreate($name){
+    public function groupCreate($name){
 
         return $this->wechat->user_group->create($name);
 
     }
 
     //修改分组
-    public function gupdate($groupId,$name){
+    public function groupUpdate($groupId,$name){
 
         return $this->wechat->user_group->update($groupId,$name);
 
     }
     //删除分组
-    public function gdelete($groupId){
+    public function groupDelete($groupId){
 
         return $this->wechat->user_group->delete($groupId);
 
     }
     //移动单个用户到指定分组
-    public function gmove($openId,$groupId){
+    public function groupMove($openId,$groupId){
 
         return $this->wechat->user_group->moveUser($openId,$groupId);
 
     }
     //批量移动用户到指定分组
-    public function gmoves(array $openIds,$groupId){
+    public function groupMoves(array $openIds,$groupId){
 
         return $this->wechat->user_group->moveUsers($openIds, $groupId);
 
     }
     //获取标签列表
-    public function tags(){
+    public function tagList(){
 
         return $this->wechat->user_tag->lists();
 
     }
     //获取标签下粉丝列表(其实就是分组下的粉丝列表)
-    public function tag($tagId,$nextOpenId=''){
+    public function tagUsers($tagId,$nextOpenId=''){
         // $nextOpenId：第一个拉取的OPENID，不填默认从头开始拉取
         return $this->wechat->user_tag->usersOfTag($tagId,$nextOpenId);
-    }
-    public  function test(){
-        return 'ok';
     }
 
 }
