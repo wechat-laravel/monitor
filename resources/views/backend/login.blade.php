@@ -24,15 +24,15 @@
 			display: table-cell;
 			vertical-align: middle;
 		}
-		#title{
-			margin-bottom: 30px;
-		}
 	</style>
 </head>
 <body>
 	<div class="container-fluid">
 		<div class="row">
-			<h1 class="text-center" id="title">Login</h1>
+			<h1 class="text-center">Wechat Monitor</h1>
+		</div>
+		<div class="row">
+			<h2 class="text-center"><a href="">登陆</a>·<a href="">注册</a></h2>
 		</div>
 		<div class="row">
 			<div class="col-md-4 col-sm-3">
