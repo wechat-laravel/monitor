@@ -1,52 +1,58 @@
-<!DOCTYPE html>
-<html>	
+<!doctype html>
+<html lang="en">
 <head>
-<title>Login</title>
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<script type="application/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false); function hideURLbar(){ window.scrollTo(0,1); } </script>
-<meta name="keywords" content="Flat Dark Web Login Form Responsive Templates, Iphone Widget Template, Smartphone login forms,Login form, Widget Template, Responsive Templates, a Ipad 404 Templates, Flat Responsive Templates" />
-<link href="backend/css/style.css" rel='stylesheet' type='text/css' />
-<!--webfonts-->
-<link href='http://fonts.useso.com/css?family=PT+Sans:400,700,400italic,700italic|Oswald:400,300,700' rel='stylesheet' type='text/css'>
-<link href='http://fonts.useso.com/css?family=Exo+2' rel='stylesheet' type='text/css'>
-<!--//webfonts-->
-<script src="http://ajax.useso.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+    <meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    <title>Login</title>
+	<link rel="stylesheet" href="backend/css/bootstrap.min.css">
+	<style>
+		html, body {
+			height: 85%;
+		}
+
+		body {
+			margin: 0;
+			padding: 0;
+			width: 100%;
+			display: table;
+			font-weight: 100;
+			font-family: 'Lato';
+		}
+
+		.container-fluid {
+			text-align: left;
+			display: table-cell;
+			vertical-align: middle;
+		}
+		#title{
+			margin-bottom: 30px;
+		}
+	</style>
 </head>
 <body>
-<script>$(document).ready(function(c) {
-	$('.close').on('click', function(c){
-		$('.login-form').fadeOut('slow', function(c){
-	  		$('.login-form').remove();
-		});
-	});	  
-});
-</script>
- <!--SIGN UP-->
- <h1>klasikal Login Form</h1>
-<div class="login-form">
-	<div class="close"> </div>
-		<div class="head-info">
-			<label class="lbl-1"> </label>
-			<label class="lbl-2"> </label>
-			<label class="lbl-3"> </label>
+	<div class="container-fluid">
+		<div class="row">
+			<h1 class="text-center" id="title">Login</h1>
 		</div>
-			<div class="clear"> </div>
-	<div class="avtar">
-		<img src="backend/img/avtar.png" />
-	</div>
-			<form>
-					<input type="text" class="text" value="Username" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'Username';}" >
-						<div class="key">
-					<input type="password" value="Password" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'Password';}">
-						</div>
-			</form>
-	<div class="signin">
-		<input type="submit" value="Login" >
-	</div>
-</div>
- <div class="copy-rights">
-					<p>Copyright &copy; 2015.Company name All rights reserved.More Templates <a href="http://www.cssmoban.com/" target="_blank" title="ģ��֮��">ģ��֮��</a> - Collect from <a href="http://www.cssmoban.com/" title="��ҳģ��" target="_blank">��ҳģ��</a></p>
+		<div class="row">
+			<div class="col-md-4 col-sm-3">
 			</div>
-
+			<div class="col-md-4 col-sm-6">
+				<form role="form">
+					<div class="form-group">
+						<label for="exampleInputEmail1">用户</label>
+						<input type="email" class="form-control" id="exampleInputEmail1" placeholder="Username">
+					</div>
+					<div class="form-group">
+						<label for="exampleInputPassword1">密码</label>
+						<input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password">
+					</div>
+					<button type="submit" class="btn btn-primary btn-lg btn-block">登陆</button>
+				</form>
+			</div>
+			<div class="col-md-4 col-sm-3">
+			</div>
+		</div>
+	</div>
 </body>
 </html>
