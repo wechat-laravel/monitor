@@ -42,7 +42,7 @@ class MaterialController extends Controller
 
     //上传图片
     public function uploadImage(){
-        $img = $this->material->uploadImage(public_path().'/images/icon.png');
+        $img = $this->material->uploadImage(public_path().'/backend/img/icon.png');
         return $img;
     }
     //删除永久素材
