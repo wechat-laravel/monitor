@@ -1,10 +1,3 @@
-<?php
-/**
- * Created by PhpStorm.
- * User: Hackqy
- * Date: 2016/10/26
- * Time: 17:59
- */
 <!-- resources/views/auth/register.blade.php -->
 
 <form method="POST" action="/auth/register">

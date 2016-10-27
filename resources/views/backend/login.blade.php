@@ -38,16 +38,19 @@
 			<div class="col-md-4 col-sm-3">
 			</div>
 			<div class="col-md-4 col-sm-6">
-				<form role="form">
+				<form role="form" method="POST" action="/auth/login">
 					<div class="form-group">
-						<label for="exampleInputEmail1">用户</label>
-						<input type="email" class="form-control" id="exampleInputEmail1" placeholder="Username">
+						<label for="exampleInputEmail1">邮箱</label>
+						<input name="email" class="form-control"  placeholder="Email">
 					</div>
 					<div class="form-group">
 						<label for="exampleInputPassword1">密码</label>
-						<input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password">
+						<input name="password" class="form-control"  placeholder="Password">
 					</div>
-					<button type="submit" class="btn btn-primary btn-lg btn-block">登陆</button>
+					<div>
+						<input type="checkbox" name="remember"> Remember Me
+						<button type="submit" class="btn btn-primary btn-lg btn-block">登陆</button>
+					</div>
 				</form>
 			</div>
 			<div class="col-md-4 col-sm-3">

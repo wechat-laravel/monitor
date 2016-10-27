@@ -2,7 +2,7 @@
 <html>
     <head>
         <title>Monitor</title>
-
+        <link rel="stylesheet" href="backend/css/bootstrap.min.css">
         <style>
             html, body {
                 height: 100%;
