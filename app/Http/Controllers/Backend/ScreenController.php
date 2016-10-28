@@ -44,7 +44,8 @@ class ScreenController extends Controller
                 if ($re->read_num >= 8000 && $re->read_num <= 15000) {
                     $this->end_read_num = $re->read_num;
                     $this->section($re->updated_at);
-                    return $this->times($res);
+                    $this->times($res);
+                    return $this->incr();
                 } else {
                     break;
                 }
@@ -56,6 +57,7 @@ class ScreenController extends Controller
 
     //一个sn的所有监控记录
     public function times($obj){
+        $end_num = end($obj)->read_num;
         foreach ($obj as $ob){
             foreach ($this->time_section as $k => $v){
                 //该数组的num会依次填空,
@@ -67,20 +69,28 @@ class ScreenController extends Controller
                 }
             }
         }
+        $this->time_section[24]['num'] = $end_num;
         return $this->time_section;
     }
 
-    //
+    //增量比值
+    public function incr(){
+        //增量
+        $sum = $this->time_section[0]['num'] - $this->time_section[24]['num'];
+        $incr = [];
+        for ($i = 24;$i>0;$i--){
+            $incr[] = ($this->time_section[$i-1]['num'] - $this->time_section[$i]['num'])/$sum;
+        }
+        var_dump($incr);
+    }
+
+    //根据最后一次时间
     public function section($timestamp){
 //        date_default_timezone_set('Asia/Shanghai');
-        for($i=0;$i<24;$i++){
+        for($i=0;$i<25;$i++){
             $this->time_section[] = ['time'=>$timestamp-(3600*$i),'num'=>""];
         }
-//        var_dump($this->end_read_num);
-//        var_dump($this->time_section);
-//        foreach ($this->time_section as $k => $v){
-//            $this->time_section[$k]['num'] = 11;
-//        }
-//        var_dump($this->time_section);
     }
+
+
 }
