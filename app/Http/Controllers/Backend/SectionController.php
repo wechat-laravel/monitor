@@ -1,7 +1,6 @@
 <?php
 
 namespace App\Http\Controllers\Backend;
-
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use App\Http\Requests;
@@ -23,26 +22,50 @@ class SectionController extends Controller
 
     public function index()
     {
+        $id  = $this->getId();
         $now = time();
         $res = DB::table(env('DB_SCREEN'))
-            ->select('sn','begin_at','end_at')
+            ->select('sn')
             ->where('end_at','<',$now)
             ->where('days','=',1)
+            ->where('id','>',$id)
+            ->offset(0)
+            ->limit(200)
             ->get();
-
+//        return $res;
         return $this->screen($res);
+    }
+    //获取起始ID
+    public function getId(){
+        $res = DB::table(env('DB_RATIO'))
+            ->select('sn')
+            ->orderby('id','desc')
+            ->first();
+        $id = DB::table(env('DB_SCREEN'))
+            ->select('id')
+            ->where('sn','=',$res->sn)
+            ->first();
+        return $id->id;
     }
 
     //根据最终阅读量来筛选
     public function screen($obj)
     {
         foreach ($obj as $ob) {
+            //$res一个sn的所有记录
             $res = DB::table(env('DB_SCREEN_RESULT'))
                 ->select('sn', 'read_num', 'like_num', 'updated_at')
                 ->where('sn', '=', $ob->sn)
                 ->orderby('updated_at', 'desc')
                 ->get();
             foreach ($res as $re) {
+                //判断该sn是否已经存在表中,存在跳过
+                $exists = DB::table(env('DB_RATIO'))
+                    ->select('sn')
+                    ->where('sn','=',$re->sn)
+                    ->first();
+                if(!empty($exists)) break;
+
                 if ($re->read_num >= 8000 && $re->read_num <= 15000) {
                     $this->end_read_num = $re->read_num;
                     $this->sn = $re->sn;
@@ -53,8 +76,10 @@ class SectionController extends Controller
                     $result = $this->hoursIncr();
                     if(!$result){
                         exit($re->sn.'有误');
+                    }else{
+                        break;
                     }
-                } else {
+                }else{
                     break;
                 }
             }
