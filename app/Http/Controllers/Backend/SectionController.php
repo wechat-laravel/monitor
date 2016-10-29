@@ -30,11 +30,15 @@ class SectionController extends Controller
             ->where('days','=',1)
             ->where('id','>',$id)
             ->offset(0)
-            ->limit(200)
+            ->limit(100)
             ->get();
 //        return $res;
+        if(empty($res)){
+            exit;
+        }
         return $this->screen($res);
     }
+
     //获取起始ID
     public function getId(){
         $res = DB::table(env('DB_RATIO'))
@@ -70,7 +74,7 @@ class SectionController extends Controller
                     ->first();
                 if(!empty($exists)) break;
 
-                if ($re->read_num >= 8000 && $re->read_num <= 15000) {
+                if ($re->read_num > 15000 && $re->read_num < 100000) {
                     $this->end_read_num = $re->read_num;
                     $this->sn = $re->sn;
 //                    $this->section($re->updated_at);
