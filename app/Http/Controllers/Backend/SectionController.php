@@ -9,7 +9,7 @@ use App\Http\Controllers\Controller;
 class SectionController extends Controller
 {
 
-    //记录最后时间的前的24个小时 时间增量比值
+    //记录最后时间的前的24个小时时间  增量比值
     protected $time_section = [];
     //记录该监控所在的整点时间段内的  增量比值
     protected $time_hour    = [];
@@ -30,7 +30,7 @@ class SectionController extends Controller
             ->where('days','=',1)
             ->where('id','>',$id)
             ->offset(0)
-            ->limit(100)
+            ->limit(200)
             ->get();
 //        return $res;
         if(empty($res)){
@@ -74,7 +74,7 @@ class SectionController extends Controller
                     ->first();
                 if(!empty($exists)) break;
 
-                if ($re->read_num > 15000 && $re->read_num < 100000) {
+                if ($re->read_num >= 8000 && $re->read_num < 100000) {
                     $this->end_read_num = $re->read_num;
                     $this->sn = $re->sn;
 //                    $this->section($re->updated_at);
@@ -149,9 +149,9 @@ class SectionController extends Controller
         for ($i = 23;$i>0;$i--){
             $time = date('Y/m/d H:i:s',$this->time_hour[$i-1]['time']);
             $time = intval(substr($time,11,2));
-            //ratio 比值 都是千分数,乘1000 四舍五入 保留为整数
+            //ratio 比值 向上保留万分数 除以100
             if($this->time_hour[$i-1]['num'] - $this->time_hour[$i]['num'] != 0){
-                $ratio=intval(round((($this->time_hour[$i-1]['num'] - $this->time_hour[$i]['num'])/$sum)*1000));
+                $ratio=intval((ceil((($this->time_hour[$i-1]['num'] - $this->time_hour[$i]['num'])/$sum)*10000)));
             }else{
                 $ratio=0;
             }
