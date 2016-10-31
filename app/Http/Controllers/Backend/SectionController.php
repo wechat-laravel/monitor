@@ -29,7 +29,7 @@ class SectionController extends Controller
             ->where('end_at','<',$now)
             ->where('days','=',1)
             ->where('id','>',$id)
-            ->offset(0)
+            ->offset(500)
             ->limit(500)
             ->get();
 //        return $res;
@@ -60,20 +60,23 @@ class SectionController extends Controller
     public function screen($obj)
     {
         foreach ($obj as $ob) {
+            $post_time = $ob->post_at;
+
             //过滤掉监控时间与文章发布时间相差一个小时的
-            if($ob->begin_at - $ob->post_at > 3600){
-                continue;
-            }
+
             //$res一个sn的所有记录
             $res = DB::table(env('DB_SCREEN_RESULT'))
                 ->select('sn', 'read_num', 'like_num', 'updated_at')
                 ->where('sn', '=', $ob->sn)
                 ->orderby('updated_at', 'desc')
                 ->get();
-            //如果记录开始监控的时间与真实开始监控的时间相差一个小时 跳过
-            if(end($res)->updated_at - $ob->begin_at > 3600) continue;
+            //监控的时候出现错误也会造成没有监控的情况
+            if(empty($res)) continue;
+            //updated_at是按照倒叙来排的  如果记录开始监控的时间与真实开始监控的时间相差一个小时 跳过
+            if( end($res)->updated_at - $post_time >3600) continue;
 
             foreach ($res as $re) {
+
 
                 //判断该sn是否已经存在表中,存在跳过
                 $exists = DB::table(env('DB_RATIO'))
@@ -85,9 +88,7 @@ class SectionController extends Controller
                 if ($re->read_num >= 8000 && $re->read_num < 100000) {
                     $this->end_read_num = $re->read_num;
                     $this->sn = $re->sn;
-//                    $this->section($re->updated_at);
                     $this->hours($re->updated_at);
-//                    $this->monitorSection($res);
                     $this->monitorHours($res);
                     $result = $this->hoursIncr();
                     if(!$result){
@@ -145,6 +146,7 @@ class SectionController extends Controller
             $incr[] = ($this->time_section[$i-1]['num'] - $this->time_section[$i]['num'])/$sum;
         }
     }
+
     //整点的增量比值
     public function hoursIncr(){
         //增量
@@ -203,7 +205,23 @@ class SectionController extends Controller
 
     //查出不正常的sn
     public function abnormal(){
-
+        $res = DB::table(env('DB_RATIO'))
+            ->select('sn')
+            ->where('ratio','=',0)
+            ->where('times','>=',8)
+            ->where('times','<=',23)
+            ->get();
+        foreach ($res as $re){
+             $result = $this->delete($re->sn);
+             if(!$result) exit($re->sn);
+        }
+    }
+    //删除不正常的sn
+    public function delete($sn){
+        $res = DB::table(env('DB_RATIO'))
+            ->where('sn','=',$sn)
+            ->delete();
+        return $res;
     }
 
 }
