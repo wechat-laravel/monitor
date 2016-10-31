@@ -143,7 +143,7 @@ class SectionController extends Controller
         $sum = $this->time_hour[0]['num'] - $this->time_hour[23]['num'];
         //开始计算比值的起始时间
         //时间都转换成24小时制的整数
-        $incr [] = ['sn'=>$this->sn,'times'=> intval(substr(date('Y/m/d H:i:s',$this->time_hour[23]['time']),11,2)) ,'ratio'=>0 ];
+//        $incr [] = ['sn'=>$this->sn,'times'=> intval(substr(date('Y/m/d H:i:s',$this->time_hour[23]['time']),11,2)) ,'ratio'=>0 ];
         //计算比值总和,如果等于零,表示该监控记录有误
         $num = 0;
         for ($i = 23;$i>0;$i--){
