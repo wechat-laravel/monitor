@@ -25,12 +25,12 @@ class SectionController extends Controller
         $id  = $this->getId();
         $now = time();
         $res = DB::table(env('DB_SCREEN'))
-            ->select('sn')
+            ->select('sn','post_at','begin_at')
             ->where('end_at','<',$now)
             ->where('days','=',1)
             ->where('id','>',$id)
             ->offset(0)
-            ->limit(200)
+            ->limit(500)
             ->get();
 //        return $res;
         if(empty($res)){
@@ -60,13 +60,21 @@ class SectionController extends Controller
     public function screen($obj)
     {
         foreach ($obj as $ob) {
+            //过滤掉监控时间与文章发布时间相差一个小时的
+            if($ob->begin_at - $ob->post_at > 3600){
+                continue;
+            }
             //$res一个sn的所有记录
             $res = DB::table(env('DB_SCREEN_RESULT'))
                 ->select('sn', 'read_num', 'like_num', 'updated_at')
                 ->where('sn', '=', $ob->sn)
                 ->orderby('updated_at', 'desc')
                 ->get();
+            //如果记录开始监控的时间与真实开始监控的时间相差一个小时 跳过
+            if(end($res)->updated_at - $ob->begin_at > 3600) continue;
+
             foreach ($res as $re) {
+
                 //判断该sn是否已经存在表中,存在跳过
                 $exists = DB::table(env('DB_RATIO'))
                     ->select('sn')
@@ -193,5 +201,9 @@ class SectionController extends Controller
         }
     }
 
+    //查出不正常的sn
+    public function abnormal(){
+
+    }
 
 }
