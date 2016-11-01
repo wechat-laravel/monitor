@@ -166,6 +166,8 @@ class SectionController extends Controller
         //计算比值总和,如果等于零,表示该监控记录有误
         $num = 0;
         $incr = [];
+        //记录ratio相等的个数
+        $same = [];
         for ($i = 0;$i<$arr_count;$i++){
             $time = date('Y/m/d H:i:s',$this->time_hour[$i+1]['time']);
             $time = intval(substr($time,11,2));
@@ -175,10 +177,25 @@ class SectionController extends Controller
             }else{
                 $ratio=0;
             }
+
+            $same [] = $ratio;
+
             $incr[] = ['sn'=>$this->sn,'times'=>$time ,'ratio'=>$ratio];
 
             $num = $num + $ratio;
         }
+        //统计ratio出现一样的次数
+        $same_arr  = array_count_values($same);
+        //计算有几个单元
+        $same_time = count($same_arr);
+        //计算次数的总和,正常的`和`应该等于单元数,每个单元出现的次数为1,如果总和比单元多两点,
+        //表示ratio出现3词以上一致 或者有多个ratio出现一致,则过滤掉
+        $same_sum  = array_sum($same_arr);
+
+        if($same_sum - $same_time > 2){
+            return true;
+        }
+
         if($num == 0){
             return true;
         }
@@ -219,13 +236,16 @@ class SectionController extends Controller
         $res = DB::table(env('DB_RATIO'))
             ->select('sn')
             ->where('ratio','=',0)
-            ->where('times','>=',8)
-            ->where('times','<=',23)
+            ->where('times','>=',0)
+            ->where('times','<=',2)
+            ->groupBy('sn')
+//            ->havingRaw(' count(sn) < 12 ')
             ->get();
         foreach ($res as $re){
              $result = $this->delete($re->sn);
              if(!$result) exit($re->sn);
         }
+        return 'ok';
     }
     //删除不正常的sn
     public function delete($sn){
@@ -234,5 +254,6 @@ class SectionController extends Controller
             ->delete();
         return $res;
     }
+
 
 }
