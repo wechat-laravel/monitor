@@ -13,7 +13,8 @@ class SectionController extends Controller
     protected $time_section = [];
     //记录该监控所在的整点时间段内的  增量比值
     public  $time_hour    = [];
-
+    //记录起始时间段的各阶段增量比值
+    public  $ratios  = null;
     //文章的唯一标识
     protected $sn ;
 
@@ -254,6 +255,58 @@ class SectionController extends Controller
             ->delete();
         return $res;
     }
+    //统计每个时间段发文的每个点的平均增长比值
+    public function avg($time){
 
+        $times = intval($time);
+
+        $avg_arr = [];
+        for($i=0;$i<23;$i++){
+            if($times == 24){
+                $times = 0;
+            }
+            $avg_arr[] = DB::select('SELECT avg(ratio) as avg_ratio FROM '.env('DB_RATIO').' WHERE sn IN (SELECT sn FROM '.env('DB_RATIO_STAR')." WHERE times={$time}) AND times={$times}");
+
+            $times +=1;
+        }
+        return $avg_arr;
+    }
+    //给每篇文章打分
+    public function mark($sn){
+        $res = DB::table(env('DB_RATIO'))
+            ->select('times','ratio')
+            ->where('sn','=',$sn)
+            ->orderBy('id')
+            ->get();
+//        return $res;
+//        $i =1;
+        foreach ($res as $re => $r){
+            //循环取一次,第一个为开始的时间
+            $ratios = $this->avg($r->times);
+            break;
+        }
+//        var_dump($ratios[0][0]->avg_ratio);exit;
+        $i= 0 ;
+        $score= 0;
+        foreach ($res as $re => $r){
+            //当前ratio的平均值
+            $avg_ratio = intval($ratios[$i][0]->avg_ratio);
+            //分10份,以此时$avg_ratio的值为中心,如果sn的ratio在基数加减5份之内,为满分,超过一份-2分
+            $length_ratio = $avg_ratio/10;
+            //算出范围
+            $range= ceil((abs($r->ratio - $avg_ratio))/$length_ratio);
+            //开始打分
+            if($range > 5){
+                //每超过一份扣2分
+                $score += 10 - $range*2;
+            }else{
+                $score += 10;
+            }
+            $i ++;
+        }
+        //总分为230分
+        $score = intval(($score/230)*100);
+        var_dump($score);
+    }
 
 }
