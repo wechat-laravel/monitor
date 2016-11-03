@@ -46,7 +46,6 @@ class ScoreController extends Controller
     }
 
     public function screen($time){
-//        var_dump($time);exit;
         $arr = array_reverse($time);
         $arr_num = 0;
         foreach ($arr as $k => $v){
@@ -60,6 +59,7 @@ class ScoreController extends Controller
         for ($i=0; $i<$arr_num; $i++){
             array_pop($time);
         }
+
         $arr_count = count($time)-1;
         //因为这里减一了,如果<11 说明不足12个小时,数据就没有什么意义了
         if($arr_count < 11) return $this->bad($this->sn,'监控的有效时间不足12个小时');
@@ -100,8 +100,7 @@ class ScoreController extends Controller
         if($same_sum - $same_time > 2){
             return $this->bad($this->sn,'各时间点出现3次以上增量比一致的');
         }
-        return $this->mark($incr);
-
+        return $this->mark($incr,$arr_count);
 
 
 
@@ -123,8 +122,12 @@ class ScoreController extends Controller
         }
         return $avg_arr;
     }
-    //给每篇文章打分
-    public function mark($sn_arr){
+    //给每篇文章打分,
+    /**
+     * @param $sn_arr array 文章各节点的增量比数据
+     * @param $count  int 该文章有效的时间段数量
+     */
+    public function mark($sn_arr,$count){
         foreach ($sn_arr as $re => $r){
             //循环取一次,第一个为开始的时间
             $ratios = $this->avg($r['times']);
@@ -149,8 +152,9 @@ class ScoreController extends Controller
             }
             $i ++;
         }
-        //总分为230分
-        $score = intval(($score/230)*100);
+        //总分为文章监控时间段的有效数量*10
+        $sum = $count*10;
+        $score = intval(($score/$sum)*100);
         var_dump($score);
     }
     //监控有误,不正常的

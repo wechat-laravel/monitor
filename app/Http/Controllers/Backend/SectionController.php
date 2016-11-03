@@ -16,7 +16,11 @@ class SectionController extends Controller
     //文章的唯一标识
     protected $sn ;
 
-    public function index()
+    public function index(){
+        return '';
+    }
+
+    public function section()
     {
         $id  = $this->getId();
         $now = time();
@@ -29,7 +33,6 @@ class SectionController extends Controller
             ->limit(500)
 //            ->where('sn','=','77c9cd42c144e23a37ce0a1dd5bae33d')
             ->get();
-//        return $res;
         if(empty($res)){
             exit;
         }
@@ -132,15 +135,6 @@ class SectionController extends Controller
         }
     }
 
-    //分段的增量比值
-    public function sectionIncr(){
-        //增量
-        $sum = $this->time_section[0]['num'] - $this->time_section[24]['num'];
-        $incr = [];
-        for ($i = 24;$i>0;$i--){
-            $incr[] = ($this->time_section[$i-1]['num'] - $this->time_section[$i]['num'])/$sum;
-        }
-    }
 
     //整点的增量比值
     public function hoursIncr(){
@@ -204,16 +198,6 @@ class SectionController extends Controller
 
     }
 
-    //分段 数组创建
-    public function section($timestamp){
-        //如果数组不为空 清空
-        if(!empty($this->time_hour)){
-            $this->time_hour = [];
-        }
-        for($i=0;$i<25;$i++){
-            $this->time_section[] = ['time'=>$timestamp-(3600*$i),'num'=>0];
-        }
-    }
 
     //整点 数组创建
     public function hours($timestamp){
