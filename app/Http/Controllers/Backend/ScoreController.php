@@ -13,6 +13,10 @@ class ScoreController extends Controller
 {
     public $sn = null;
 
+    public function index(){
+        return '';
+    }
+
     public function score($id){
         $post = DB::table(env('DB_SCREEN'))
             ->select('sn','post_at')
@@ -42,6 +46,7 @@ class ScoreController extends Controller
     }
 
     public function screen($time){
+//        var_dump($time);exit;
         $arr = array_reverse($time);
         $arr_num = 0;
         foreach ($arr as $k => $v){
