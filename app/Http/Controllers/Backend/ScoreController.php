@@ -24,6 +24,7 @@ class ScoreController extends Controller
             ->first();
         if(empty($post)) return $this->bad('该监控信息不存在');
         $this->sn = $post->sn;
+        
         $post_time = $post->post_at;
 
         $res = DB::table(env('DB_SCREEN_RESULT'))
