@@ -24,7 +24,7 @@ class ScoreController extends Controller
             ->first();
         if(empty($post)) return $this->bad('该监控信息不存在');
         $this->sn = $post->sn;
-        
+
         $post_time = $post->post_at;
 
         $res = DB::table(env('DB_SCREEN_RESULT'))
@@ -100,7 +100,7 @@ class ScoreController extends Controller
         $same_sum  = array_sum($same_arr);
 
         if($same_sum - $same_time > 2){
-            return $this->bad('各时间点出现3次以上增量比一致的');
+            return $this->bad('各时间点出现3次以上增长速度一致');
         }
         return $this->mark($incr,$arr_count);
 
