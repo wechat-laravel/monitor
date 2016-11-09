@@ -31,10 +31,7 @@ class IndexController extends Controller
     {
         return 'index';
     }
-
-    public function test(){
-        return 'test';
-    }
+    
     /**
      * Show the form for creating a new resource.
      *
