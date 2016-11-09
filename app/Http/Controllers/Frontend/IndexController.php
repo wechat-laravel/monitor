@@ -31,15 +31,8 @@ class IndexController extends Controller
     {
         return 'index';
     }
-    
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function text(){
-        return 'text';
-    }
+
+
     public function create()
     {
         //
