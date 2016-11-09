@@ -31,10 +31,5 @@ class IndexController extends Controller
     {
         return 'index';
     }
-
-
-    public function create()
-    {
-        //
-    }
+    
 }
