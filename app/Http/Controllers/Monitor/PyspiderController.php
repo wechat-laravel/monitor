@@ -35,6 +35,8 @@ class PyspiderController extends Controller
         $openid   = $data->openid;
         $url      = "https://api.weixin.qq.com/sns/userinfo?access_token=$token&openid=$openid&lang=zh_CN";
         $result   = $this->curls($url);
+
+        
         return view('user',['user'=>$result,'url'=>$base_url]);
 
 
