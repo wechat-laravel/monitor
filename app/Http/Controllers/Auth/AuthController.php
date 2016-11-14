@@ -20,7 +20,11 @@ class AuthController extends Controller
     | a simple trait to add these behaviors. Why don't you explore it?
     |
     */
+    //登陆成功后重定向
     protected $redirectPath = '/admin';
+    //登陆失败后重定向
+//    protected $loginPath    = '/login';
+
 
     use AuthenticatesAndRegistersUsers, ThrottlesLogins;
 
