@@ -9,7 +9,6 @@
 		html, body {
 			height: 85%;
 		}
-
 		body {
 			margin: 0;
 			padding: 0;
@@ -18,7 +17,6 @@
 			font-weight: 100;
 			font-family: 'Lato';
 		}
-
 		.container-fluid {
 			text-align: left;
 			display: table-cell;
@@ -45,9 +43,10 @@
 					</div>
 					<div class="form-group">
 						<label for="exampleInputPassword1">密码</label>
-						<input name="password" class="form-control"  placeholder="Password">
+						<input type="password" name="password" class="form-control"  placeholder="Password">
 					</div>
 					<div>
+						{!! csrf_field() !!}
 						<input type="checkbox" name="remember"> Remember Me
 						<button type="submit" class="btn btn-primary btn-lg btn-block">登陆</button>
 					</div>
