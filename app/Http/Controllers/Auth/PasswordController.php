@@ -17,6 +17,8 @@ class PasswordController extends Controller
     | explore this trait and override any methods you wish to tweak.
     |
     */
+    //密码重置后,跳转的链接地址
+    protected $redirectTo = '/admin';
 
     use ResetsPasswords;
 
