@@ -19,6 +19,7 @@ class IpStatusController extends Controller
         //
         $num = \App\Models\IpStatusModel::where('status','=',0)->count();
         return $num;
+        
         //强迫症一般,打卡.该项目暂搁置,coding.net代码推送
     }
 
