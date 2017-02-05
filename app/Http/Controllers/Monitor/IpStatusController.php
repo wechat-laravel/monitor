@@ -21,7 +21,6 @@ class IpStatusController extends Controller
         return $num;
 
         
-        
         //强迫症,打卡.该项目暂搁置,工作需要转 coding.net代码推送
     }
 
